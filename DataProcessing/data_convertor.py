@@ -19,8 +19,11 @@ class DataConvertor:
         raw_objs = []
         with open(source_path, mode="r") as f:
             for line in f:
-                raw_data_obj = RawDataObj(line)
-                raw_objs.append(raw_data_obj)
+                try:
+                    raw_data_obj = RawDataObj(line)
+                    raw_objs.append(raw_data_obj)
+                except:
+                    continue
         return raw_objs
 
 
