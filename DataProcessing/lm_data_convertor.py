@@ -18,8 +18,9 @@ class LMDataConvertor(DataConvertor):
             lm_text_only_obj = {"text": raw_data_obj.get_inside()}
             lm_data_instances.append(lm_text_only_obj)
 
-        with open(dst_path, mode="w", encoding="utf8") as f:
-            f.write(json.dumps(LMDataSet("text_only", lm_data_instances).to_json(), ensure_ascii=False))
+        #with open(dst_path, mode="w", encoding="utf8") as f:
+        #    f.write(json.dumps(LMDataSet("text_only", lm_data_instances).to_json(), ensure_ascii=False))
+        print(LMDataSet("text_only", lm_data_instances).to_json())
 
 
 class LMDataSet:
@@ -28,10 +29,10 @@ class LMDataSet:
         self.instances = instances
 
     def to_json(self):
-        return json.dumps(
-            {
-                "type": self.type,
-                "instances": self.instances
-            },
-            ensure_ascii=False
-        )
+        data = {
+            "type": self.type,
+            "instances": list(self.instances)
+        }
+        return json.dumps(data, ensure_ascii=False)
+
+
