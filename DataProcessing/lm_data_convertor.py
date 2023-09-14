@@ -36,3 +36,9 @@ class LMDataSet:
         return json.dumps(data, ensure_ascii=False)
 
 
+l = LMDataConvertor()
+l.convert_to_text_only("/Users/hanting.cong/Desktop/毁伤数据集/中文汇总_加标点/第3章-爆炸冲击毁伤效应.txt", "/Users/hanting.cong/Desktop/毁伤数据集/test.json")
+
+l = LMDataConvertor()
++l.convert_to_text_only("/home/hanting/DATA/damage_data/raw/20230905/all.jsonl",
++        "/home/hanting/DATA/damage_data/lm_format/20230905.json")
