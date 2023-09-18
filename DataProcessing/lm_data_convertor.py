@@ -18,9 +18,9 @@ class LMDataConvertor(DataConvertor):
             lm_text_only_obj = {"text": raw_data_obj.get_inside()}
             lm_data_instances.append(lm_text_only_obj)
 
-        #with open(dst_path, mode="w", encoding="utf8") as f:
-        #    f.write(json.dumps(LMDataSet("text_only", lm_data_instances).to_json(), ensure_ascii=False))
-        print(LMDataSet("text_only", lm_data_instances).to_json())
+        with open(dst_path, mode="w", encoding="utf8") as f:
+            f.write(LMDataSet("text_only", lm_data_instances).to_json())
+        #print(LMDataSet("text_only", lm_data_instances).to_json())
 
 
 class LMDataSet:
@@ -37,8 +37,4 @@ class LMDataSet:
 
 
 l = LMDataConvertor()
-l.convert_to_text_only("/Users/hanting.cong/Desktop/毁伤数据集/中文汇总_加标点/第3章-爆炸冲击毁伤效应.txt", "/Users/hanting.cong/Desktop/毁伤数据集/test.json")
-
-l = LMDataConvertor()
-+l.convert_to_text_only("/home/hanting/DATA/damage_data/raw/20230905/all.jsonl",
-+        "/home/hanting/DATA/damage_data/lm_format/20230905.json")
+l.convert_to_text_only("/Users/hanting.cong/Desktop/毁伤数据集/v2023.09.15/20230915.jsonl", "/Users/hanting.cong/Desktop/毁伤数据集/v2023.09.15/20230915.json")
