@@ -14,8 +14,24 @@ class DataConvertor:
     def __init__(self):
         return
 
-    @staticmethod
-    def get_raw_objs(source_path):
+    def get_raw_objs(self, src, source_path):
+        if src == "moss-sft":
+            return self.get_moss_sft_raw_objs(source_path)
+        else:
+            return self.get_default_raw_objs(source_path)
+
+    def get_default_raw_objs(self, source_path):
+        raw_objs = []
+        with open(source_path, mode="r") as f:
+            for line in f:
+                try:
+                    raw_data_obj = RawDataObj(line)
+                    raw_objs.append(raw_data_obj)
+                except:
+                    continue
+        return raw_objs
+
+    def get_moss_sft_raw_objs(self, source_path):
         raw_objs = []
         with open(source_path, mode="r") as f:
             for line in f:

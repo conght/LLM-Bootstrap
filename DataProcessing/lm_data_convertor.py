@@ -20,7 +20,16 @@ class LMDataConvertor(DataConvertor):
 
         with open(dst_path, mode="w", encoding="utf8") as f:
             f.write(LMDataSet("text_only", lm_data_instances).to_json())
-        #print(LMDataSet("text_only", lm_data_instances).to_json())
+
+    def convert_to_text2text(self, src_path, dst_path):
+        lm_data_instances = []
+        raw_data_objs = self.get_raw_objs(src, src_path)
+        for raw_data_obj in raw_data_objs:
+            lm_text_only_obj = {"text": raw_data_obj.get_inside()}
+            lm_data_instances.append(lm_text_only_obj)
+
+        with open(dst_path, mode="w", encoding="utf8") as f:
+            f.write(LMDataSet("text_only", lm_data_instances).to_json())
 
 
 class LMDataSet:

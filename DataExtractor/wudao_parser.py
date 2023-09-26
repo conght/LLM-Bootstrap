@@ -57,7 +57,7 @@ def sample_wudao_corpus(folder_path, output_file, job_config):
                         if data_types not in job_config.keys():
                             continue
                         content = item['content']
-                        content_len = len(content) * 2.5
+                        content_len = int(len(content) * 2.5)
                         job_config[data_types]['size'] = job_config[data_types]['size'] - content_len
                         if job_config[data_types]['size'] < 0:
                             job_config.pop(data_types)
@@ -67,6 +67,6 @@ def sample_wudao_corpus(folder_path, output_file, job_config):
 
 
 if __name__ == "__main__":
-    job_config = cal_distribution( 25 * 1024 * 1024)
+    job_config = cal_distribution(25 * 1024 * 1024)
     sample_wudao_corpus("test/", "test_result.jsonl", job_config)
 
